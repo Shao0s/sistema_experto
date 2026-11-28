@@ -1,10 +1,9 @@
 """Punto de entrada del sistema experto de productividad personal."""
 
-from sistema_experto import (
-    REGLAS,
-    evaluar_sistema_experto,
-    obtener_hechos_iniciales,
-)
+from conocimiento.hechos import obtener_hechos_iniciales
+from motor_inferencia.motor_inferencia import evaluar_sistema_experto
+from motor_inferencia.reglas import REGLAS
+
 
 
 def mostrar_hechos(titulo, hechos):

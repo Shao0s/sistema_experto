@@ -1,14 +1,20 @@
-"""Definición y creación de la base de hechos iniciales."""
+
+"""Gestión de los hechos iniciales del sistema experto."""
 
 
-def obtener_hechos_iniciales():
-    """Devuelve una copia nueva de los hechos iniciales del usuario."""
-    return {
-        "desconoce_uso_tiempo": True,
-        "tiene_multiples_tareas": True,
-        "existen_tareas_urgentes_e_importantes": True,
-        "sufre_interrupciones_frecuentes": True,
-        "requiere_alta_concentracion": True,
-        "fatiga_mental": True,
-        "cumplio_planificacion_diaria": False,
-    }
+def obtener_hechos_iniciales(respuestas_usuario=None):
+    """
+    Construye la base de hechos iniciales a partir de las respuestas.
+
+    Los hechos sin respuesta no se agregan a la base de conocimiento.
+    """
+    if respuestas_usuario is None:
+        return {}
+
+    hechos = {}
+
+    for identificador, valor in respuestas_usuario.items():
+        if valor is not None:
+            hechos[identificador] = valor
+
+    return hechos
